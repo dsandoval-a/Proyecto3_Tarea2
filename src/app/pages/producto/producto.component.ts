@@ -48,18 +48,16 @@ import { CommonModule } from '@angular/common';
     }
 
     private checkSuperAdmin(): void {
-      // Verificar si el usuario es Super Admin y actualizar la propiedad
       this.isSuperAdmin = this.authService.isSuperAdmin();
     }
 
     saveProducto(producto: IProducto){
-        // Convertimos el id de la categoría en un objeto categoría antes de enviar
         const formValue = this.productoForm.value;
         const productoG = {
           ...formValue,
-          categoria: { id: formValue.categoriaId }  // Crea el objeto categoria a partir del id de la categoría
+          categoria: { id: formValue.categoriaId }  
         };
-        delete productoG.categoriaId;  // Si no necesitas `categoriaId` en el objeto final, lo puedes eliminar
+        delete productoG.categoriaId;  
     
 
     this.productoService.save(producto);
@@ -73,7 +71,7 @@ import { CommonModule } from '@angular/common';
         descripcion: producto.descripcion ? producto.descripcion : '',
         precio: producto.precio ? String(producto.precio) : '',
         cantidad_en_stock: producto.cantidad_en_stock ? String(producto.cantidad_en_stock) : '', 
-        categoriaId: producto.categoria && producto.categoria.id ? String(producto.categoria.id) : ''  // Cambia a producto.categoria.id
+        categoriaId: producto.categoria && producto.categoria.id ? String(producto.categoria.id) : ''  
       });
       
       this.modalService.displayModal('md', this.addProductoModal);

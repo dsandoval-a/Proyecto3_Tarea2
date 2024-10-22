@@ -42,20 +42,18 @@ export class ProductoService extends BaseService<IProducto> {
       }
     });
   }
-    
+
  
   save(producto: IProducto) {
-    // Asegúrate de que id_categoria no esté vacío
     if (!producto.categoria.id) {
       this.alertService.displayAlert('error', 'Categoría es requerida', 'center', 'top', ['error-snackbar']);
-      return; // Detener la ejecución si no hay categoría
+      return; 
     }
 
-    // Aquí se realiza la llamada al servidor para guardar el producto
     this.createCustomSource(producto).subscribe({
       next: (response: any) => {
         this.alertService.displayAlert('success', response.message, 'center', 'top', ['success-snackbar']);
-        this.getAll(); // Llama a getAll para actualizar la lista de productos
+        this.getAll(); 
       },
       error: (err: any) => {
         this.alertService.displayAlert('error', 'Error al crear producto', 'center', 'top', ['error-snackbar']);
