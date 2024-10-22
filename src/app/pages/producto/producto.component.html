@@ -1,0 +1,47 @@
+@defer{
+    
+    <div class="row p-4">
+      <div class="col-12">
+          <div class="d-flex justify-content-between align-items-center">
+              <h2>Productos</h2>
+              <button *ngIf="isSuperAdmin" (click)="modalService.displayModal('md', addProductoModal)" type="button" class="btn btn-primary"> Agregar Producto</button>
+          </div>
+      </div>
+      <div class="col-12">
+          <app-producto-list 
+          (callModalAction)="callEdition($event)"
+          (callDeleteAction)="productoService.delete($event)"
+          [productos]="productoService.producto$()"
+          />
+  
+          </div>
+              <app-pagination 
+               [service]="productoService"
+  />
+  </div>
+
+  }@loading (minimum 1s){
+    <app-loader/>
+  }
+  
+  <ng-template #addProductoModal>
+      <app-modal
+      [hideFooter]="true"
+      >
+          <div>
+              <app-producto-form
+              [productoForm]="productoForm"
+              (callSaveMethod)="saveProducto($event)"
+              (callUpdateMethod)="updateProducto($event)"
+  
+              />
+              
+          </div>
+  
+      </app-modal>
+    </ng-template>
+  
+    
+  
+  
+  

@@ -5,6 +5,7 @@ export interface ILoginResponse {
 
 export interface IResponse<T> {
   data: T;
+  meta?: any;
 }
 
 export interface IUser {
@@ -72,4 +73,23 @@ export interface ISearch {
   pageSize?: number;
   totalElements?: number;
   totalPages?:number;
+}
+
+export interface ICategoria{
+  id?:number;
+  nombre?: string;
+  descripcion?: string;
+}
+
+export interface IProducto{
+  id?:number;
+  nombre?: string;
+  descripcion?: string;
+  precio?: number;
+  cantidad_en_stock?: number;
+  categoria: {
+    id: number;
+
+  }
+
 }

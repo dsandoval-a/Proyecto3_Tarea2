@@ -37,6 +37,9 @@ export class BaseService<T> {
   public addCustomSource(customUrlSource: string, data: {}): Observable<IResponse<T>> {
     return this.http.post<IResponse<T>>(`${this.source}/${customUrlSource}`, data);
   }
+  public createCustomSource(data: {}): Observable<IResponse<T>> {
+    return this.http.post<IResponse<T>>(this.source, data);
+  }
 
   public edit(id: number | undefined, data: {}): Observable<IResponse<T>> {
     return this.http.put<IResponse<T>>(this.source + '/' + id, data);

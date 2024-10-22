@@ -1,0 +1,37 @@
+<h2>{{title}}</h2>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Cantidad en Stock</th>
+        <th scope="col">Acciones</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        @for (item of productos; track $index) {
+
+            <tr>
+                <th scope="row">{{item.id}}</th>
+                <td>{{item.nombre}}</td>
+                <td>{{item.descripcion}}</td>
+                <td>{{item.precio}}</td>
+                <td>{{item.cantidad_en_stock}}</td>
+
+
+
+                <td>
+                    <button *ngIf="isSuperAdmin"  (click)="callModalAction.emit(item)" class="btn btn-warning me-2" type="button"><i class="fas fa-pen"></i></button>
+                    <button *ngIf="isSuperAdmin"  (click)="callDeleteAction.emit(item)" class="btn btn-danger" type="button"><i class="fas fa-trash"></i></button>
+                </td>
+              </tr>
+        }           
+         
+   
+     
+    </tbody>
+  </table>
